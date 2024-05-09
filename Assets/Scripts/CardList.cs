@@ -14,16 +14,16 @@ public class CardList : MonoBehaviour
     void Start()
     {
         // Kartları oluşturmak için fonksiyonu çağır
-        CreateCards(16); // Örnek olarak 16 kart oluşturduk
+        //CreateCards(16); // Örnek olarak 16 kart oluşturduk
     }
 
-    void CreateCards(int count)
+    public void CreateCards(int count)
     {
         // İstenen sayıda kart ekleyelim
         for (int i = 0; i < count; i++)
         {
             // Yeni bir kart oluştur
-            CardData newCard = new CardData();
+            CardData newCard = ScriptableObject.CreateInstance<CardData>();
 
             // Kartın özelliklerini belirle
             newCard.Initialize(i, cardImages[i].name, cardImages[i], backImage);
