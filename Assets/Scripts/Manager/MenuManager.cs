@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +27,8 @@ namespace Manager
 	{
 		[Header("Menu Buttons")]
 		[SerializeField] private List<LevelData> levelDataList;
+		[SerializeField] private RectTransform MenuLevel;
+		[SerializeField] private RectTransform MainScoreTable;
 
 		[Header("Select Level Panel")]
 		[SerializeField] private List<SelectLevelData> selectLevelButtons;
@@ -33,10 +36,18 @@ namespace Manager
 		[SerializeField] private TMP_Text levelNameText;
 		[SerializeField] private TMP_Text levelIndexText;
 		
+		[Header("Profile Panel")]
+		[SerializeField] private GameObject profilePanel;
+		[SerializeField] private Button profileButton;
+
 
 		private void Start()
 		{
+			OpenMenuLevelPanel();
+				
+			profilePanel.SetActive(false);
 			levelSelectPanel.SetActive(false);
+			
 			// Her bir butona click event listener ekleniyor
 			foreach (var levelData in levelDataList)
 			{
@@ -68,6 +79,27 @@ namespace Manager
 		public void JustCloseLevelSelectPanel()
 		{
 			levelSelectPanel.SetActive(false);
+		}
+
+		public void OpenTabelListPanel()
+		{
+			MenuLevel.DOAnchorPos(new Vector2(+2000, 0), 0.5f);
+			MainScoreTable.DOAnchorPos(new Vector2(0, 0), 0.5f);
+		}
+		
+		public void OpenMenuLevelPanel()
+		{
+			MainScoreTable.DOAnchorPos(new Vector2(-2000, 0), 0.5f);
+			MenuLevel.DOAnchorPos(new Vector2(0, 0), 0.5f);
+		}
+
+		public void JustOpenProfilePanel()
+		{
+			profilePanel.SetActive(true);
+		}
+		public void JustCloseProfilePanel()
+		{
+			profilePanel.SetActive(false);
 		}
 
 	}
