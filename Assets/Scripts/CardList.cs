@@ -20,16 +20,20 @@ public class CardList : MonoBehaviour
     public void CreateCards(int count)
     {
         // İstenen sayıda kart ekleyelim
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < count/2; i++)
         {
             // Yeni bir kart oluştur
             CardData newCard = ScriptableObject.CreateInstance<CardData>();
+            CardData newCard2 = ScriptableObject.CreateInstance<CardData>();
 
             // Kartın özelliklerini belirle
             newCard.Initialize(i, cardImages[i].name, cardImages[i], backImage);
+            newCard2.Initialize(i, cardImages[i].name, cardImages[i], backImage);
+
 
             // Oluşturulan kartı listeye ekle
             cards.Add(newCard);
+            cards.Add(newCard2);
         }
     }
 }
