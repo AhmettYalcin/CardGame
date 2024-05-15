@@ -11,16 +11,16 @@ public class CardManager : MonoBehaviour
 
     public GameObject buttonPrefab; // Kartları temsil eden buton prefabı
     public RectTransform buttonsParent; // Butonların ekleneceği parent objesi
-    public int newCardCount;
+    public int newCardCount;  // gösterilecek kart sayısı
     public float showDuration = 3f; // Kartların görüneceği süre
     int clickCount = 0; // Butona tıklama sayısını izleyen değişken
-    private List<CardData> selectedCards = new List<CardData>();
+    private List<CardData> selectedCards = new List<CardData>();  //kullanıcının tıklayarak seçtiği kartlar
 
     void Start()
     {
         newCardCount = 16;
         // Kart listesini oluştur
-        cardList.CreateCards(newCardCount); // Örnek olarak 16 kart oluşturduk
+        cardList.CreateCards(newCardCount);
         
 
         // Kartları karıştır
@@ -31,7 +31,7 @@ public class CardManager : MonoBehaviour
         // Karıştırılmış kartları butonlara ata
         AssignCardsToButtons();
         
-        StartCoroutine(ShowCardsForDuration(showDuration));
+        StartCoroutine(ShowCardsForDuration(showDuration));  //kartlar geldikten belli bir saniye sonra arkasını döndür
     }
 
     void AssignCardsToButtons()
@@ -50,6 +50,9 @@ public class CardManager : MonoBehaviour
 
             // Butona kart resmini ata
             button.image.sprite = cardData.cardImage;
+            
+            // Kartın bağlı olduğu butonu kart nesnesine ata
+            cardData.cardButton = button;
 
             // Butonun tıklama olayını atama
             button.onClick.AddListener(() => OnCardButtonClick(cardData));
@@ -86,23 +89,29 @@ public class CardManager : MonoBehaviour
     // Buton tıklandığında gerçekleşecek olay
     void OnCardButtonClick(CardData cardData)
     {
-        selectedCards.Add(cardData);
-        // Butona tıklama sayısını arttır
-        clickCount++;
-
-        // Kartın Image bileşenini elde et
-        Button button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-        Image buttonImage = button.GetComponent<Image>();
-
-        // Butona tıklanınca kartın resmini cardImage olarak göster
-        buttonImage.sprite = cardData.cardImage;
-
-        // Eğer iki kart seçildiyse kontrol fonksiyonunu çağır
-        if (clickCount == 2)
+        // Eğer zaten 2 kart açık ise, ekstra tıklamaları önle
+        if (clickCount >= 2)
+            return;
+        // Seçilen kart sayısı 2 veya daha azsa işlem yap
+        if (selectedCards.Count < 2)
         {
-            clickCount = 0; // Değişkeni sıfırla
-            Control(selectedCards); // Kontrol fonksiyonunu çağır
-            selectedCards.Clear(); // Seçilen kartları temizle
+            selectedCards.Add(cardData); // Kartı seçilen kartlar listesine ekle
+            clickCount++; // Butona tıklama sayısını arttır
+
+            // Kartın Image bileşenini elde et
+            Button button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            Image buttonImage = button.GetComponent<Image>();
+
+            // Butona tıklanınca kartın resmini cardImage olarak göster
+            buttonImage.sprite = cardData.cardImage;
+
+            // Eğer iki kart seçildiyse kontrol fonksiyonunu çağır
+            if (clickCount == 2)
+            {
+                Control(selectedCards); // Kontrol fonksiyonunu çağır
+                selectedCards.Clear(); // Seçilen kartları temizle
+               
+            }
         }
     }
     void Control(List<CardData> cardData)
@@ -115,6 +124,7 @@ public class CardManager : MonoBehaviour
         {
             // Puan ekle (Örneğin: ScoreManager.AddScore(10);)
             Debug.Log("Kartlar eşleşti! Puan eklendi.");
+            DisableCards(cardData);
         }
         else
         {
@@ -122,7 +132,7 @@ public class CardManager : MonoBehaviour
         
             // Kartların imagesini backImage olarak değiştir
             // Arka resimleri göstermek için coroutine'i çağır
-            List<CardData> cardsCopy = new List<CardData>(cardData); // Orjinal listeyi değiştirmemek için bir kopya oluştur
+            List<CardData> cardsCopy = new List<CardData>(cardData); 
 
             StartCoroutine(ShowBackImages(cardsCopy)); // Kopya listeyi kullanarak coroutine'i çağır
         }
@@ -142,6 +152,22 @@ public class CardManager : MonoBehaviour
 
             // Butonun resmini backImage olarak ayarla
             buttonImage.sprite = card.backImage;
+            clickCount = 0; // Değişkeni sıfırla
+        }
+    }
+    void DisableCards(List<CardData> cards)
+    {
+        foreach (CardData card in cards)
+        {
+            // Kartın bağlı olduğu butonu kullan
+            Button button = card.cardButton;
+
+            // Eğer buton bulunursa
+            if (button != null)
+            {
+                // Butonu devre dışı bırak
+                button.gameObject.SetActive(false);
+            }
         }
     }
 
