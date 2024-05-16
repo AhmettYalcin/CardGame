@@ -10,15 +10,26 @@ public class CardManager : MonoBehaviour
     public CardRandomOrder cardRandomOrder; // Kartları karıştırmak için kullanılacak script
 
     public GameObject buttonPrefab; // Kartları temsil eden buton prefabı
-    public RectTransform buttonsParent; // Butonların ekleneceği parent objesi
-    public int newCardCount;  // gösterilecek kart sayısı
-    public float showDuration = 3f; // Kartların görüneceği süre
-    int clickCount = 0; // Butona tıklama sayısını izleyen değişken
+    private RectTransform buttonsParent; // Butonların ekleneceği parent objesi
+    private int newCardCount;  // gösterilecek kart sayısı
+    private string levelStr;    // Kaça kaçlık bir alanda oynayacağımız belirten değişken
+    private float showDuration = 2f; // Kartların görüneceği süre
+    private int clickCount = 0; // Butona tıklama sayısını izleyen değişken
     private List<CardData> selectedCards = new List<CardData>();  //kullanıcının tıklayarak seçtiği kartlar
 
     void Start()
     {
-        newCardCount = 16;
+        levelStr = "TwoXTwo";
+        // levelStr adını kullanarak RectTransform'i bul
+        RectTransform levelRectTransform = GameObject.Find(levelStr)?.GetComponent<RectTransform>();
+
+        // Bulunan RectTransform'i buttonParent'e atayın
+        if (levelRectTransform != null)
+        {
+            buttonsParent = levelRectTransform;
+            buttonsParent.gameObject.SetActive(true);
+        }
+        newCardCount = 4;
         // Kart listesini oluştur
         cardList.CreateCards(newCardCount);
         
@@ -37,30 +48,37 @@ public class CardManager : MonoBehaviour
     void AssignCardsToButtons()
     {
         // Canvas üzerindeki tüm butonları temizle
-        foreach (Transform child in buttonsParent)
+       /* foreach (Transform child in buttonsParent)
         {
             Destroy(child.gameObject);
-        }
+        }*/
+        // Parent transformunun altındaki boş objeleri bul
+        GameObject[] emptySlots = GameObject.FindGameObjectsWithTag(levelStr);
+        // boş objeleri tag inden bularak listeye yazıyoruz
+        int index = 0;
+        
 
-        // Her bir kart için bir buton oluştur
+        // Her bir boş obje için bir buton oluştur
         foreach (CardData cardData in cardRandomOrder.shuffledCardList.cards)
         {
-            GameObject buttonGO = Instantiate(buttonPrefab, buttonsParent);
+            // Boş GameObject üzerinde butonu oluştur
+            GameObject buttonGO = Instantiate(buttonPrefab, emptySlots[index].transform); 
+            // boş objelerin konumlarında butonları oluşturuyoruz
             Button button = buttonGO.GetComponent<Button>();
+            print(emptySlots[index].transform);
 
             // Butona kart resmini ata
             button.image.sprite = cardData.cardImage;
-            
+
             // Kartın bağlı olduğu butonu kart nesnesine ata
             cardData.cardButton = button;
 
             // Butonun tıklama olayını atama
             button.onClick.AddListener(() => OnCardButtonClick(cardData));
+            index++;
         }
-
-        // GridLayoutGroup'u güncelle
-        LayoutRebuilder.ForceRebuildLayoutImmediate(buttonsParent.GetComponent<RectTransform>());
     }
+
     
     IEnumerator ShowCardsForDuration(float duration)
     {
@@ -70,12 +88,12 @@ public class CardManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         // Belirtilen sürenin sonunda kartların backImage resmini göster
-        foreach (Transform child in buttonsParent)
+        foreach (CardData cardData in cardRandomOrder.shuffledCardList.cards)
         {
-            // Buton bileşenini elde et
-            Button button = child.GetComponent<Button>();
+            // Kartın bağlı olduğu butonu al
+            Button button = cardData.cardButton;
 
-            // Eğer bu transform bir butona sahipse
+            // Eğer buton bulunursa
             if (button != null)
             {
                 // Butonun resmini değiştir
@@ -109,7 +127,7 @@ public class CardManager : MonoBehaviour
             if (clickCount == 2)
             {
                 Control(selectedCards); // Kontrol fonksiyonunu çağır
-                selectedCards.Clear(); // Seçilen kartları temizle
+                
                
             }
         }
@@ -122,14 +140,15 @@ public class CardManager : MonoBehaviour
         // Eğer kartların ID'leri eşitse
         if (cardData[0].cardID == cardData[1].cardID)
         {
+            StartCoroutine(MyCoroutineWithDelay(cardData));
             // Puan ekle (Örneğin: ScoreManager.AddScore(10);)
             Debug.Log("Kartlar eşleşti! Puan eklendi.");
-            DisableCards(cardData);
+            //DisableCards(cardData);
         }
         else
         {
             Debug.Log("Kartlar eşleşmedi.");
-        
+            
             // Kartların imagesini backImage olarak değiştir
             // Arka resimleri göstermek için coroutine'i çağır
             List<CardData> cardsCopy = new List<CardData>(cardData); 
@@ -142,12 +161,12 @@ public class CardManager : MonoBehaviour
     {
         // Bir süre beklet
         yield return new WaitForSeconds(1f);
-
+        selectedCards.Clear(); // Seçilen kartları temizle
         // Kartların imagesini backImage olarak değiştir
         foreach (CardData card in cards)
         {
-            // Butonu bul ve Image bileşenini al
-            Button button = FindButtonByCard(card);
+            // Kartın bağlı olduğu butonu al
+            Button button = card.cardButton;
             Image buttonImage = button.GetComponent<Image>();
 
             // Butonun resmini backImage olarak ayarla
@@ -166,9 +185,22 @@ public class CardManager : MonoBehaviour
             if (button != null)
             {
                 // Butonu devre dışı bırak
-                button.gameObject.SetActive(false);
+                //button.gameObject.SetActive(false);
+                Destroy(button.gameObject);
+                Destroy(card);
             }
         }
+        selectedCards.Clear(); // Seçilen kartları temizle
+    }
+    IEnumerator MyCoroutineWithDelay(List<CardData> cards)
+    {
+        // 2 saniye beklemek için WaitForSeconds kullanılır
+        yield return new WaitForSeconds(1f);
+        DisableCards(cards);
+        clickCount = 0;
+
+        // 2 saniye bekledikten sonra buradaki işlemler gerçekleşir
+        Debug.Log("2 saniye bekledikten sonra bu mesajı yazdık.");
     }
 
     Button FindButtonByCard(CardData card)

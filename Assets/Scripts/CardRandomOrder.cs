@@ -15,6 +15,32 @@ public class CardRandomOrder : MonoBehaviour
         // Kartları rastgele sıraya göre yeniden düzenle
         //ShuffleCards();
     }
+   /* public void ShuffleCards(int requestedCardCount)
+    {
+        List<CardData> tempCardList = new List<CardData>(originalCardList.cards);
+
+        // Fisher-Yates karıştırma algoritması
+        int n = tempCardList.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            CardData temp = tempCardList[k];
+            tempCardList[k] = tempCardList[n];
+            tempCardList[n] = temp;
+        }
+
+        // İstenen sayıda kartı al
+        List<CardData> customCardList = new List<CardData>();
+        for (int i = 0; i < requestedCardCount && i < tempCardList.Count; i++)
+        {
+            customCardList.Add(tempCardList[i]);
+        }
+
+        // Karıştırılmış ve istenilen sayıda kartları atama
+        shuffledCardList.cards = customCardList;
+    } */
+
 
     public void ShuffleCards()
     {
