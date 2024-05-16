@@ -16,10 +16,11 @@ public class CardManager : MonoBehaviour
     private float showDuration = 2f; // Kartların görüneceği süre
     private int clickCount = 0; // Butona tıklama sayısını izleyen değişken
     private List<CardData> selectedCards = new List<CardData>();  //kullanıcının tıklayarak seçtiği kartlar
+    private Button bigButton;
 
     void Start()
     {
-        levelStr = "TwoXTwo";
+        levelStr = "ThreeXFour";
         // levelStr adını kullanarak RectTransform'i bul
         RectTransform levelRectTransform = GameObject.Find(levelStr)?.GetComponent<RectTransform>();
 
@@ -29,9 +30,9 @@ public class CardManager : MonoBehaviour
             buttonsParent = levelRectTransform;
             buttonsParent.gameObject.SetActive(true);
         }
-        newCardCount = 4;
+        newCardCount = 12;
         // Kart listesini oluştur
-        cardList.CreateCards(newCardCount);
+        cardList.CreateCards(newCardCount,"Set1");
         
 
         // Kartları karıştır
@@ -98,7 +99,7 @@ public class CardManager : MonoBehaviour
             {
                 // Butonun resmini değiştir
                 Image buttonImage = button.GetComponent<Image>();
-                buttonImage.sprite = cardList.backImage;
+                buttonImage.sprite = cardData.backImage;
             }
         }
     }
@@ -141,6 +142,7 @@ public class CardManager : MonoBehaviour
         if (cardData[0].cardID == cardData[1].cardID)
         {
             StartCoroutine(MyCoroutineWithDelay(cardData));
+            CreateBigButton(cardData[0]);
             // Puan ekle (Örneğin: ScoreManager.AddScore(10);)
             Debug.Log("Kartlar eşleşti! Puan eklendi.");
             //DisableCards(cardData);
@@ -194,13 +196,10 @@ public class CardManager : MonoBehaviour
     }
     IEnumerator MyCoroutineWithDelay(List<CardData> cards)
     {
-        // 2 saniye beklemek için WaitForSeconds kullanılır
         yield return new WaitForSeconds(1f);
         DisableCards(cards);
         clickCount = 0;
-
-        // 2 saniye bekledikten sonra buradaki işlemler gerçekleşir
-        Debug.Log("2 saniye bekledikten sonra bu mesajı yazdık.");
+        
     }
 
     Button FindButtonByCard(CardData card)
@@ -223,6 +222,39 @@ public class CardManager : MonoBehaviour
 
         // Eğer eşleşen bir buton bulunamazsa null döndür
         return null;
+    }
+    
+    void CreateBigButton(CardData cardData)
+    {
+        // Büyük butonu oluştur
+        GameObject bigButtonGO = new GameObject("BigButton");
+        RectTransform bigButtonRectTransform = bigButtonGO.AddComponent<RectTransform>();
+        bigButton = bigButtonGO.AddComponent<Button>();
+        Image bigButtonImage = bigButtonGO.AddComponent<Image>(); // Image bileşeni ekleyin
+
+        // Butonun büyüklüğünü ayarla
+        bigButtonRectTransform.sizeDelta = new Vector2(7, 7);
+
+        // Butonu parent olarak ayarla
+        bigButtonRectTransform.SetParent(buttonsParent);
+        
+        // Kart verisinin resmini butona ata
+        bigButtonImage.sprite = cardData.cardImage;
+
+        // Butonun pozisyonunu ayarla
+        bigButtonRectTransform.anchoredPosition = Vector2.zero;
+
+        // Butona tıklama olayı ata
+        bigButton.onClick.AddListener(OnBigButtonClick);
+
+        
+    }
+
+    void OnBigButtonClick()
+    {
+        // Kullanıcı büyük butona tıkladığında geri gitme işlemi burada gerçekleşir
+        Destroy(bigButton.gameObject);
+        bigButton.gameObject.SetActive(false);
     }
 
 }

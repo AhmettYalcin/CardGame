@@ -1639,7 +1639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards: []
-  cardImages:
+  cardImages1:
   - {fileID: 21300000, guid: e4386fff6d352ac4db75b772f6f3fdbf, type: 3}
   - {fileID: 21300000, guid: bfd8de94008c5d549b5eb192df83def0, type: 3}
   - {fileID: 21300000, guid: d43f3c01517825a46825fe0b4571d2bc, type: 3}
@@ -1656,7 +1656,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 399f0ca0601066c49b4ebd6181d5db30, type: 3}
   - {fileID: 21300000, guid: 73c5b074f62734045a06875730136323, type: 3}
   - {fileID: 21300000, guid: ed212955b9a73e548b7158e861114820, type: 3}
-  backImage: {fileID: 21300000, guid: 49d60e0b1414a824080c7f7580ed5eb0, type: 3}
+  cardImages2: []
+  cardImages3: []
+  cardImages4: []
+  cardImages5: []
+  cardImages6: []
+  backImage1: {fileID: 21300000, guid: 49d60e0b1414a824080c7f7580ed5eb0, type: 3}
+  backImage2: {fileID: 0}
+  backImage3: {fileID: 0}
+  backImage4: {fileID: 0}
+  backImage5: {fileID: 0}
+  backImage6: {fileID: 0}
 --- !u!1 &1934750397
 GameObject:
   m_ObjectHideFlags: 0

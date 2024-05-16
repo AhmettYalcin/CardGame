@@ -8,18 +8,52 @@ public class CardList : MonoBehaviour
     public List<CardData> cards = new List<CardData>(); // Tüm kartların listesi
 
     // Kartların resimleri dizisi
-    public Sprite[] cardImages;
+    public Sprite[] cardImages1;
+    public Sprite[] cardImages2;
+    public Sprite[] cardImages3;
+    public Sprite[] cardImages4;
+    public Sprite[] cardImages5;
+    public Sprite[] cardImages6;
 
     // Kartların arka resmi
-    public Sprite backImage;
+    public Sprite backImage1;
+    public Sprite backImage2;
+    public Sprite backImage3;
+    public Sprite backImage4;
+    public Sprite backImage5;
+    public Sprite backImage6;
+    
+    // Kartların resimlerini tutacak sözlük
+    public Dictionary<string, Sprite[]> cardImageDictionary = new Dictionary<string, Sprite[]>();
+
+    // Kartların arka resmini tutacak sözlük
+    public Dictionary<string, Sprite> backImageDictionary = new Dictionary<string, Sprite>();
+    
+    void Awake()
+    {
+        // Her bir kart seti için resim dizilerini ve arka plan resmini tanımla
+        cardImageDictionary.Add("Set1", cardImages1);
+        backImageDictionary.Add("Set1", backImage1);
+
+        cardImageDictionary.Add("Set2", cardImages2);
+        backImageDictionary.Add("Set2", backImage2);
+
+        // Daha fazla kart seti eklemek için aynı şekilde devam edebilirsiniz
+    }
 
     void Start()
     {
         // Kartları oluşturmak için fonksiyonu çağır
         //CreateCards(16); // Örnek olarak 16 kart oluşturduk
     }
-    public void CreateCards(int count)
+    public void CreateCards(int count,string imageSetName)
     {
+        // Kullanıcı tarafından belirtilen isme göre kart resimlerini al
+        Sprite[] selectedCardImages = cardImageDictionary[imageSetName];
+
+        // Kullanıcı tarafından belirtilen isme göre arka resmi al
+        Sprite selectedBackImage = backImageDictionary[imageSetName];
+        
         // Rastgele seçilecek kart sayısını belirle
         int maxIndex = 15;
         int[] selectedIndices = new int[count / 2]; // İki kart için aynı resim kullanılacağı için count/2
@@ -44,8 +78,8 @@ public class CardList : MonoBehaviour
             CardData newCard2 = ScriptableObject.CreateInstance<CardData>();
 
             // Kartların özelliklerini belirle
-            newCard.Initialize(index, cardImages[index].name, cardImages[index], backImage);
-            newCard2.Initialize(index, cardImages[index].name, cardImages[index], backImage);
+            newCard.Initialize(index, selectedCardImages[index].name, selectedCardImages[index], selectedBackImage);
+            newCard2.Initialize(index, selectedCardImages[index].name, selectedCardImages[index],selectedBackImage);
 
             // Oluşturulan kartları listeye ekle
             cards.Add(newCard);
