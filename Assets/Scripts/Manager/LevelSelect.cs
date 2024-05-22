@@ -13,16 +13,23 @@ namespace Manager
 	[System.Serializable]
 	public class LevelClass
 	{
+		public string ThemaName;
+		
+		public int LevelIndex;
+		public int Price;
+		public int LevelSliderCount;
+		public int MaxLevelSliderCount;
+
+		public bool IsUnlocked;
+		
 		public Button LevelButton;
 		public Button OpenButton;
-		public string ThemaName;
-		public int levelIndex;
-		public int Price;
-		public bool IsUnlocked;
+
+		public Slider LevelSlider;
+
 		public TMP_Text levelButtonText;
 		public TMP_Text levelPriceText;
 	}
-
 	public class LevelSelect : MonoBehaviour
 	{
 		public LevelClass[] levels;
@@ -43,29 +50,42 @@ namespace Manager
 		[SerializeField] private TMP_Text  playerPuanText;
 		[SerializeField] private TMP_Text  playerStaminaText;
 		
+		
 		private void Start()
 		{
+			UPdateDatats(); // proje datalarını güncellemek için 
 			JustCloseSecentPanel(); // Başlangıçta ikinci ekranları kapatmak için
 			UpdateUI(); // UI'yi güncellemek için Start'ta çağırıyoruz
 			OpenLevelPanel(); // Başlangıçta Level sahnesini açmak için 
 			textUpdate(); // Başlangıçta textleri güncellemek için 
+
+		}
+
+		private void UPdateDatats()
+		{
 			//Levels içersindeki butonlara metot atamak için 
 			foreach (var levelData in levels)
 			{
 				levelData.LevelButton.onClick.AddListener(() => OnLevelButtonClick(levelData));
 				levelData.levelButtonText.text = levelData.ThemaName.ToString();
 				levelData.levelPriceText.text = levelData.Price.ToString();
+
+				levelData.LevelSlider.maxValue = levelData.MaxLevelSliderCount;
+				levelData.LevelSlider.value = levelData.LevelSliderCount;
+				
 			}
+			
 			foreach (var selectLevelData in selectLevelButtons)
 			{
 				selectLevelData.selectLevelButton.onClick.AddListener(() => OnSelectLevelButtonClick(selectLevelData));
 			}
 		}
+		
 		private void OnLevelButtonClick(LevelClass clickedLevel)
 		{
 			// Seçilen seviye bilgilerini güncelle
 			levelNameText.text = clickedLevel.ThemaName;
-			levelIndexText.text = "Level " + clickedLevel.levelIndex.ToString();
+			levelIndexText.text = "Level " + clickedLevel.LevelIndex.ToString();
 
 			// Paneli aktif hale getir
 			levelSelectPanel.SetActive(true);
@@ -138,6 +158,11 @@ namespace Manager
 		{
 			levelSelectPanel.SetActive(false);
 			profilePanel.SetActive(false);
+		}
+
+		private void sliderController()
+		{
+			
 		}
 
 		#region DoTweeen
