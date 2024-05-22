@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,20 +10,31 @@ public class CardManager : MonoBehaviour
 {
     public CardList cardList; // Kart listesi
     public CardRandomOrder cardRandomOrder; // Kartları karıştırmak için kullanılacak script
+    public GameManager gameManager;
+    public TMP_Text scoreText;
+    public TMP_Text HPText;
 
     public GameObject buttonPrefab; // Kartları temsil eden buton prefabı
     private RectTransform buttonsParent; // Butonların ekleneceği parent objesi
     private int newCardCount;  // gösterilecek kart sayısı
+    private int cardCount; // bölümdeki mevcut kart sayısı
     private string levelStr;    // Kaça kaçlık bir alanda oynayacağımız belirten değişken
     private float showDuration = 2f; // Kartların görüneceği süre
     private int clickCount = 0; // Butona tıklama sayısını izleyen değişken
     private List<CardData> selectedCards = new List<CardData>();  //kullanıcının tıklayarak seçtiği kartlar
     private Button bigButton;
     private bool canClick = false; // Kartların tıklanabilirliğini kontrol eden boolean değişken
+    private int score; //oyun içindeki puanımızı tutan değişken
+    private int healthPoints; // oyun içinde kalan can değerimiz
 
     void Start()
     {
-        levelStr = "ThreeXFour";
+        levelStr = "FourXFour";
+        score = 0; // daha sonra menüden gelen puan a eşitlenecek
+        scoreText.text = score.ToString();
+        healthPoints = 16;
+        HPText.text = healthPoints.ToString();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
         // levelStr adını kullanarak RectTransform'i bul
         RectTransform levelRectTransform = GameObject.Find(levelStr)?.GetComponent<RectTransform>();
 
@@ -32,7 +44,8 @@ public class CardManager : MonoBehaviour
             buttonsParent = levelRectTransform;
             buttonsParent.gameObject.SetActive(true);
         }
-        newCardCount = 12;
+        newCardCount = 16;
+        cardCount = newCardCount;
         // Kart listesini oluştur
         cardList.CreateCards(newCardCount);
         
@@ -154,16 +167,23 @@ public class CardManager : MonoBehaviour
         {
             StartCoroutine(MyCoroutineWithDelay(cardData));
             CreateBigButton(cardData[0]);
-            // Puan ekle (Örneğin: ScoreManager.AddScore(10);)
+            score += 10;
+            scoreText.text = score.ToString();
             Debug.Log("Kartlar eşleşti! Puan eklendi.");
             //DisableCards(cardData);
+            cardCount -= 2;
+            GameEnd(); // tüm kartların açılıp açılmadığını komtrol et
+            
         }
         else
         {
             Debug.Log("Kartlar eşleşmedi.");
             cardData[0].isFlipped = false;
             cardData[1].isFlipped = false; // Kartlar eşleşmediğinde tekrar tıklanabilmesi için değeri false yap
-            // Kartların imagesini backImage olarak değiştir
+
+            healthPoints--; // canını azalt eşleşme sağlanmadığında
+            HPText.text = healthPoints.ToString();
+            GameEnd();  // oyunun bitip bitmediğini kontrol et
             // Arka resimleri göstermek için coroutine'i çağır
             List<CardData> cardsCopy = new List<CardData>(cardData); 
 
@@ -296,6 +316,16 @@ public class CardManager : MonoBehaviour
                 button.transform.localScale = new Vector3(1, 1, 1);
             });
         });
+    }
+
+    void GameEnd()
+    {
+        if (healthPoints==0)
+        {
+            gameManager.GameLose(score);
+        }else if(cardCount==0){
+            gameManager.GameWin(score);
+        }
     }
 
 }
