@@ -9,6 +9,7 @@ public class CardData : ScriptableObject
     public Sprite cardImage; // Kartın ön yüzündeki görüntü
     public Sprite backImage; //Kartın arka yüzündeki görüntü
     public Button cardButton; // Kartın bağlı olduğu button
+    public bool isFlipped = false; // Kartın açık olup olmadığını izleyen değişken
 
     public void Initialize(int id, string name, Sprite image,Sprite backImage)
     {
