@@ -32,7 +32,7 @@ public class CardManager : MonoBehaviour
         levelStr = "FourXFour";
         score = 0; // daha sonra menüden gelen puan a eşitlenecek
         scoreText.text = score.ToString();
-        healthPoints = 16;
+        healthPoints = 4;
         HPText.text = healthPoints.ToString();
         gameManager = GameObject.FindObjectOfType<GameManager>();
         // levelStr adını kullanarak RectTransform'i bul
