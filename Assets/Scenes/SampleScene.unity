@@ -3602,7 +3602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4 xx 6
+  m_text: 4 x 6
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3898,10 +3898,10 @@ RectTransform:
   - {fileID: 629569503}
   m_Father: {fileID: 1729947983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -300}
-  m_SizeDelta: {x: 600, y: 600}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207571189
 MonoBehaviour:
@@ -5077,7 +5077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1338238715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5396,10 +5396,10 @@ RectTransform:
   - {fileID: 1286442360}
   m_Father: {fileID: 1729947983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1144, y: -300}
-  m_SizeDelta: {x: 600, y: 600}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410191440
 MonoBehaviour:
@@ -7089,7 +7089,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1687056505}
-  - component: {fileID: 1687056506}
   - component: {fileID: 1687056507}
   - component: {fileID: 1687056508}
   m_Layer: 0
@@ -7114,47 +7113,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 244963907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1687056506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687056504}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df781e87e690b984f9c73ae30998195f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelDataList:
-  - levelButton: {fileID: 1585535614}
-    levelIndex: 0
-    levelName: Sport
-    levelButtonText: {fileID: 0}
-  - levelButton: {fileID: 0}
-    levelIndex: 1
-    levelName: School
-    levelButtonText: {fileID: 0}
-  - levelButton: {fileID: 0}
-    levelIndex: 2
-    levelName: Patates
-    levelButtonText: {fileID: 0}
-  - levelButton: {fileID: 0}
-    levelIndex: 3
-    levelName: Matates
-    levelButtonText: {fileID: 0}
-  selectLevelButtons:
-  - selectLevelButton: {fileID: 0}
-    IntXInt: 2
-  - selectLevelButton: {fileID: 0}
-    IntXInt: 4
-  - selectLevelButton: {fileID: 0}
-    IntXInt: 6
-  - selectLevelButton: {fileID: 0}
-    IntXInt: 8
-  levelSelectPanel: {fileID: 0}
-  levelNameText: {fileID: 0}
-  levelIndexText: {fileID: 0}
 --- !u!114 &1687056507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7168,7 +7126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - ThemaName: School
+  - ThemaName: Animal
     LevelIndex: 0
     Price: 0
     LevelSliderCount: 3
@@ -7190,7 +7148,7 @@ MonoBehaviour:
     LevelSlider: {fileID: 1869349215}
     levelButtonText: {fileID: 506182173}
     levelPriceText: {fileID: 2144396636}
-  - ThemaName: Animal
+  - ThemaName: Colors
     LevelIndex: 0
     Price: 200
     LevelSliderCount: 4
@@ -7212,7 +7170,7 @@ MonoBehaviour:
     LevelSlider: {fileID: 2000726607}
     levelButtonText: {fileID: 634908980}
     levelPriceText: {fileID: 694071074}
-  - ThemaName: Colors
+  - ThemaName: Music
     LevelIndex: 5
     Price: 500
     LevelSliderCount: 0
@@ -7225,13 +7183,14 @@ MonoBehaviour:
     levelPriceText: {fileID: 1880905349}
   selectLevelButtons:
   - selectLevelButton: {fileID: 1207571189}
-    IntXInt: 2
+    IntXInt: 22
+    SecButtonThemaName: 
   - selectLevelButton: {fileID: 1410191440}
-    IntXInt: 4
+    IntXInt: 34
+    SecButtonThemaName: 
   - selectLevelButton: {fileID: 1767993316}
-    IntXInt: 6
-  - selectLevelButton: {fileID: 1801350338}
-    IntXInt: 8
+    IntXInt: 44
+    SecButtonThemaName: 
   profilePanel: {fileID: 1476238448}
   levelSelectPanel: {fileID: 1338238714}
   levelNameText: {fileID: 1258778305}
@@ -7241,6 +7200,9 @@ MonoBehaviour:
   playerCoinText: {fileID: 1244141923}
   playerPuanText: {fileID: 217272821}
   playerStaminaText: {fileID: 1976145487}
+  levelStiringMenu: 
+  levelIntMenu: 0
+  levelThemeNameInt: 0
 --- !u!114 &1687056508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7469,10 +7431,10 @@ RectTransform:
   - {fileID: 1388607447}
   m_Father: {fileID: 1729947983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -1100}
-  m_SizeDelta: {x: 600, y: 600}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767993316
 MonoBehaviour:
@@ -7695,7 +7657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1801350337
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +19,7 @@ public class CardManager : MonoBehaviour
     private RectTransform buttonsParent; // Butonların ekleneceği parent objesi
     private int newCardCount;  // gösterilecek kart sayısı
     private int cardCount; // bölümdeki mevcut kart sayısı
+    private int cardThemeIntCardManager;
     private string levelStr;    // Kaça kaçlık bir alanda oynayacağımız belirten değişken
     private float showDuration = 2f; // Kartların görüneceği süre
     private int clickCount = 0; // Butona tıklama sayısını izleyen değişken
@@ -29,10 +31,12 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        levelStr = "FourXFour";
+        levelStr = LevelSelect.instance.levelStiringMenu;
+        newCardCount = LevelSelect.instance.levelIntMenu;
+        
         score = 0; // daha sonra menüden gelen puan a eşitlenecek
         scoreText.text = score.ToString();
-        healthPoints = 4;
+        healthPoints = 2;
         HPText.text = healthPoints.ToString();
         gameManager = GameObject.FindObjectOfType<GameManager>();
         // levelStr adını kullanarak RectTransform'i bul
@@ -44,10 +48,12 @@ public class CardManager : MonoBehaviour
             buttonsParent = levelRectTransform;
             buttonsParent.gameObject.SetActive(true);
         }
-        newCardCount = 16;
+        cardThemeIntCardManager = LevelSelect.instance.levelThemeNameInt;
+        print(" Card Theme int " + cardThemeIntCardManager);
+       
         cardCount = newCardCount;
         // Kart listesini oluştur
-        cardList.CreateCards(newCardCount);
+        cardList.CreateCards(newCardCount, cardThemeIntCardManager);
         
 
         // Kartları karıştır

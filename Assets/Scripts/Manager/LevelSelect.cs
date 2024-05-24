@@ -5,6 +5,7 @@ using Datas;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -30,8 +31,19 @@ namespace Manager
 		public TMP_Text levelButtonText;
 		public TMP_Text levelPriceText;
 	}
+	
+	[System.Serializable]
+	public struct SelectLevelData
+	{
+		public Button selectLevelButton;
+		public int IntXInt;
+		public string SecButtonThemaName;
+	}
+	
 	public class LevelSelect : MonoBehaviour
 	{
+		public static LevelSelect instance { get; private set; }
+
 		public LevelClass[] levels;
 
 		[Header("Select Level Panel")]
@@ -50,6 +62,22 @@ namespace Manager
 		[SerializeField] private TMP_Text  playerPuanText;
 		[SerializeField] private TMP_Text  playerStaminaText;
 		
+		[Header("Scenes")]
+		[field: SerializeField] public string levelStiringMenu = "";
+		[field: SerializeField] public int levelIntMenu;
+		[field: SerializeField] public int levelThemeNameInt;
+		
+		private void Awake()
+		{
+			if (instance != null && instance != this)
+			{
+				Destroy(this);
+			}
+			else
+			{
+				instance = this;
+			}
+		}
 		
 		private void Start()
 		{
@@ -85,14 +113,19 @@ namespace Manager
 		{
 			// Seçilen seviye bilgilerini güncelle
 			levelNameText.text = clickedLevel.ThemaName;
+			
+			
+			print(clickedLevel.ThemaName);
 			levelIndexText.text = "Level " + clickedLevel.LevelIndex.ToString();
-
+			nextLevelTheme(clickedLevel.ThemaName);
 			// Paneli aktif hale getir
 			levelSelectPanel.SetActive(true);
 		}
 		private void OnSelectLevelButtonClick(SelectLevelData clickedLevel)
 		{
-			//ToDo Yeni mape geçiş 
+			nextLevelMove(clickedLevel.IntXInt);
+			SceneManager.LoadScene("T_CardList");
+
 			print(clickedLevel.IntXInt);
 		}
 
@@ -160,9 +193,51 @@ namespace Manager
 			profilePanel.SetActive(false);
 		}
 
-		private void sliderController()
+		private void nextLevelMove(int x)
 		{
+			switch (x)
+			{
+				case 22:
+					levelStiringMenu = "TwoXTwo";
+					levelIntMenu = 4;
+					break;
+				case 44:
+					levelStiringMenu = "FourXFour";
+					levelIntMenu = 16;
+					break;
+				case 34:
+					levelStiringMenu = "ThreeXFour";
+					levelIntMenu = 12;
+					break;
+				case 46:
+					levelStiringMenu = "FourXSix";
+					levelIntMenu = 24;
+					break;
+				
+			}
 			
+		}
+
+		private void nextLevelTheme(string theme)
+		{
+			switch (theme)
+			{
+				case "Animal":
+					levelThemeNameInt = 2;
+					break;
+				case "Sport":
+					levelThemeNameInt = 5; 
+					break;
+				case "Colors":
+					levelThemeNameInt = 3;
+					break;
+				case "Fruit":
+					levelThemeNameInt = 4;
+					break;
+				case "Music":
+					levelThemeNameInt = 6;
+					break;
+			}			
 		}
 
 		#region DoTweeen

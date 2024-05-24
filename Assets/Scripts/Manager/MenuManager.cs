@@ -16,12 +16,6 @@ namespace Manager
 		public TMP_Text levelButtonText;
 	}
 	
-	[System.Serializable]
-	public struct SelectLevelData
-	{
-		public Button selectLevelButton;
-		public int IntXInt;
-	}
 	public class MenuManager : MonoBehaviour
 	{
 		[Header("Menu Buttons")]

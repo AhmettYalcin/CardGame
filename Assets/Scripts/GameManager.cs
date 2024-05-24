@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,6 +45,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Win panel not assigned!");
         }
+    }
+
+    public void justBackToMenu()
+    {
+        //Data base e yükleme işlemleri 
+        // kayıt işlemleri 
+
+        SceneManager.LoadScene("SampleScene");
     }
 }
 
