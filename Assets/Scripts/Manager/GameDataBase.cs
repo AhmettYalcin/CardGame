@@ -16,11 +16,13 @@ namespace Datas
 				if (instance != null && instance != this)
 				{
 					Destroy(this);
+					
 				}
 				else
 				{
 					instance = this;
 				}
+				DontDestroyOnLoad(gameObject);
 			}
 
 		#endregion
@@ -28,5 +30,13 @@ namespace Datas
 		public int PlayerCoins;
 		public int PlayerPuans;
 		public int PlayerStamina;
+
+		private void Start()
+		{
+			print("Para: " + PlayerCoins + 
+			      "Puan: " + PlayerPuans + 
+			      "Stamina: " + PlayerStamina
+			);
+		}
 	}
 }

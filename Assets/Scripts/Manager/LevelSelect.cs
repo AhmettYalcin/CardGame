@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Datas;
 using DG.Tweening;
@@ -81,6 +79,7 @@ namespace Manager
 		
 		private void Start()
 		{
+			print("Menu Level Start");
 			UPdateDatats(); // proje datalarını güncellemek için 
 			JustCloseSecentPanel(); // Başlangıçta ikinci ekranları kapatmak için
 			UpdateUI(); // UI'yi güncellemek için Start'ta çağırıyoruz

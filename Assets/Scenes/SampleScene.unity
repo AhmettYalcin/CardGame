@@ -1234,6 +1234,7 @@ Transform:
   - {fileID: 519420032}
   - {fileID: 582588840}
   - {fileID: 1687056505}
+  - {fileID: 1228816348}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &247455415
@@ -3898,10 +3899,10 @@ RectTransform:
   - {fileID: 629569503}
   m_Father: {fileID: 1729947983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -300}
+  m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1207571189
 MonoBehaviour:
@@ -3985,6 +3986,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207571187}
   m_CullTransparentMesh: 1
+--- !u!1 &1228816347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1228816348}
+  - component: {fileID: 1228816349}
+  m_Layer: 0
+  m_Name: GameDataBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1228816348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228816347}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 244963907}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1228816349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228816347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b58f99131ad0542810a900130e6109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCoins: 600
+  PlayerPuans: 200
+  PlayerStamina: 4
 --- !u!1 &1244141921
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,7 +5125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1338238715
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5396,10 +5444,10 @@ RectTransform:
   - {fileID: 1286442360}
   m_Father: {fileID: 1729947983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1144, y: -300}
+  m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410191440
 MonoBehaviour:
@@ -7090,7 +7138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1687056505}
   - component: {fileID: 1687056507}
-  - component: {fileID: 1687056508}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -7129,7 +7176,7 @@ MonoBehaviour:
   - ThemaName: Animal
     LevelIndex: 0
     Price: 0
-    LevelSliderCount: 3
+    LevelSliderCount: 0
     MaxLevelSliderCount: 5
     IsUnlocked: 0
     LevelButton: {fileID: 1585535614}
@@ -7138,9 +7185,9 @@ MonoBehaviour:
     levelButtonText: {fileID: 1301362890}
     levelPriceText: {fileID: 511263969}
   - ThemaName: Sport
-    LevelIndex: 2
+    LevelIndex: 1
     Price: 100
-    LevelSliderCount: 1
+    LevelSliderCount: 0
     MaxLevelSliderCount: 5
     IsUnlocked: 0
     LevelButton: {fileID: 1662740378}
@@ -7149,9 +7196,9 @@ MonoBehaviour:
     levelButtonText: {fileID: 506182173}
     levelPriceText: {fileID: 2144396636}
   - ThemaName: Colors
-    LevelIndex: 0
+    LevelIndex: 2
     Price: 200
-    LevelSliderCount: 4
+    LevelSliderCount: 0
     MaxLevelSliderCount: 5
     IsUnlocked: 1
     LevelButton: {fileID: 88994648}
@@ -7160,7 +7207,7 @@ MonoBehaviour:
     levelButtonText: {fileID: 1295150787}
     levelPriceText: {fileID: 1462804564}
   - ThemaName: Fruit
-    LevelIndex: 4
+    LevelIndex: 3
     Price: 300
     LevelSliderCount: 0
     MaxLevelSliderCount: 5
@@ -7171,7 +7218,7 @@ MonoBehaviour:
     levelButtonText: {fileID: 634908980}
     levelPriceText: {fileID: 694071074}
   - ThemaName: Music
-    LevelIndex: 5
+    LevelIndex: 4
     Price: 500
     LevelSliderCount: 0
     MaxLevelSliderCount: 5
@@ -7203,21 +7250,6 @@ MonoBehaviour:
   levelStiringMenu: 
   levelIntMenu: 0
   levelThemeNameInt: 0
---- !u!114 &1687056508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687056504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54b58f99131ad0542810a900130e6109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCoins: 650
-  PlayerPuans: 172
-  PlayerStamina: 3
 --- !u!1 &1729947982
 GameObject:
   m_ObjectHideFlags: 0
@@ -7431,10 +7463,10 @@ RectTransform:
   - {fileID: 1388607447}
   m_Father: {fileID: 1729947983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -1100}
+  m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767993316
 MonoBehaviour:
