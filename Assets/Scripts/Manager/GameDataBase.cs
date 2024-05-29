@@ -33,10 +33,10 @@ namespace Datas
 
 		private void Start()
 		{
-			print("Para: " + PlayerCoins + 
-			      "Puan: " + PlayerPuans + 
-			      "Stamina: " + PlayerStamina
-			);
+			// print("Para: " + PlayerCoins + 
+			//       "Puan: " + PlayerPuans + 
+			//       "Stamina: " + PlayerStamina
+			// );
 		}
 	}
 }
