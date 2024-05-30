@@ -119,23 +119,23 @@ public class CardList : MonoBehaviour
            // Kartın özelliklerini belirle
            switch (cardTheme)
            {
-               case 2:
+               case 0:
                    newCard.Initialize(i, cardImages2[i].name, cardImages2[i], backImage2);
                    newCard2.Initialize(i, cardImages2[i].name, cardImages2[i], backImage2);
                    break;
-               case 3:
+               case 1:
                    newCard.Initialize(i, cardImages3[i].name, cardImages3[i], backImage2);
                    newCard2.Initialize(i, cardImages3[i].name, cardImages3[i], backImage2);
                    break;
-               case 4:
+               case 2:
                    newCard.Initialize(i, cardImages4[i].name, cardImages4[i], backImage2);
                    newCard2.Initialize(i, cardImages4[i].name, cardImages4[i], backImage2);
                    break;
-               case 5:
+               case 4:
                    newCard.Initialize(i, cardImages5[i].name, cardImages5[i], backImage2);
                    newCard2.Initialize(i, cardImages5[i].name, cardImages5[i], backImage2);
                    break;
-               case 6:
+               case 3:
                    newCard.Initialize(i, cardImages6[i].name, cardImages6[i], backImage2);
                    newCard2.Initialize(i, cardImages6[i].name, cardImages6[i], backImage2);
                    break;

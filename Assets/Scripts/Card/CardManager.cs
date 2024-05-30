@@ -14,13 +14,13 @@ public class CardManager : MonoBehaviour
     public GameManager gameManager;
     public TMP_Text scoreText;
     public TMP_Text HPText;
+    public string levelStr; 
+    public int newCardCount;  // gösterilecek kart sayısı
+    public int cardThemeIntCardManager;
 
     public GameObject buttonPrefab; // Kartları temsil eden buton prefabı
     private RectTransform buttonsParent; // Butonların ekleneceği parent objesi
-    private int newCardCount;  // gösterilecek kart sayısı
     private int cardCount; // bölümdeki mevcut kart sayısı
-    private int cardThemeIntCardManager;
-    private string levelStr;    // Kaça kaçlık bir alanda oynayacağımız belirten değişken
     private float showDuration = 2f; // Kartların görüneceği süre
     private int clickCount = 0; // Butona tıklama sayısını izleyen değişken
     private List<CardData> selectedCards = new List<CardData>();  //kullanıcının tıklayarak seçtiği kartlar
@@ -31,8 +31,9 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        levelStr = LevelSelect.instance.levelStiringMenu;
-        newCardCount = LevelSelect.instance.levelIntMenu;
+        levelStr = GameConsolo.instance.nextLevelString;
+        newCardCount = GameConsolo.instance.nextLevelHowMuch;
+        cardThemeIntCardManager = GameConsolo.instance.nextLevelThemaInt;
         
         score = 0; // daha sonra menüden gelen puan a eşitlenecek
         scoreText.text = score.ToString();
@@ -48,8 +49,7 @@ public class CardManager : MonoBehaviour
             buttonsParent = levelRectTransform;
             buttonsParent.gameObject.SetActive(true);
         }
-        cardThemeIntCardManager = LevelSelect.instance.levelThemeNameInt;
-        print(" Card Theme int " + cardThemeIntCardManager);
+      //  print(" Card Theme int " + cardThemeIntCardManager);
        
         cardCount = newCardCount;
         // Kart listesini oluştur
@@ -87,7 +87,7 @@ public class CardManager : MonoBehaviour
             GameObject buttonGO = Instantiate(buttonPrefab, emptySlots[index].transform); 
             // boş objelerin konumlarında butonları oluşturuyoruz
             Button button = buttonGO.GetComponent<Button>();
-            print(emptySlots[index].transform);
+         //   print(emptySlots[index].transform);
 
             // Butona kart resmini ata
             button.image.sprite = cardData.cardImage;
@@ -166,7 +166,7 @@ public class CardManager : MonoBehaviour
     void Control(List<CardData> cardData)
     {
         // Kontrol işlemlerini gerçekleştir
-        Debug.Log("Kartlar kontrol ediliyor...");
+       // Debug.Log("Kartlar kontrol ediliyor...");
     
         // Eğer kartların ID'leri eşitse
         if (cardData[0].cardID == cardData[1].cardID)
@@ -175,7 +175,7 @@ public class CardManager : MonoBehaviour
             CreateBigButton(cardData[0]);
             score += 10;
             scoreText.text = score.ToString();
-            Debug.Log("Kartlar eşleşti! Puan eklendi.");
+        //    Debug.Log("Kartlar eşleşti! Puan eklendi.");
             //DisableCards(cardData);
             cardCount -= 2;
             GameEnd(); // tüm kartların açılıp açılmadığını komtrol et
@@ -183,7 +183,7 @@ public class CardManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Kartlar eşleşmedi.");
+          //  Debug.Log("Kartlar eşleşmedi.");
             cardData[0].isFlipped = false;
             cardData[1].isFlipped = false; // Kartlar eşleşmediğinde tekrar tıklanabilmesi için değeri false yap
 
