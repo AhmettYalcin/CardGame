@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public CardManager cardManager;
     [SerializeField] private bool isGameWin;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] private PlayerSC playerScGameManager;
 
     public void GameLose(int score)
     {
@@ -63,9 +64,7 @@ public class GameManager : MonoBehaviour
 
         if (isGameWin)
         {
-            print("Give Game Awards !! ");
             GiveGameAwards(cardManager.cardThemeIntCardManager, cardManager.newCardCount);
-            
         }
         else
         {
@@ -97,33 +96,33 @@ public class GameManager : MonoBehaviour
             
         }
 
-        // switch (intX)
-        // {
-        //     //Para 
-        //     //Puan
-        //     //CanPuanı 
-        //     
-        //     case 4:
-        //         GameDataBase.instance.PlayerCoins += ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerStamina += 1;
-        //         break;
-        //     case 16:
-        //         GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerStamina += 1;
-        //         break;
-        //     case 12:
-        //         GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerStamina += 1;
-        //         break;
-        //     case 24:
-        //         GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-        //         GameDataBase.instance.PlayerStamina += 1;
-        //         break;
-        // }
+        switch (intX)
+        {
+            //Para 
+            //Puan
+            //CanPuanı 
+            
+            case 4:
+                playerScGameManager.PlayerCoins += ((10 * intX)/2);
+                playerScGameManager.PlayerPuans +=  ((10 * intX)/2);
+                playerScGameManager.PlayerStamina += 1;
+                break;
+            case 16:
+                playerScGameManager.PlayerCoins +=  ((10 * intX)/2);
+                playerScGameManager.PlayerPuans +=  ((10 * intX)/2);
+                playerScGameManager.PlayerStamina += 1;
+                break;
+            case 12:
+                playerScGameManager.PlayerCoins +=  ((10 * intX)/2);
+                playerScGameManager.PlayerPuans +=  ((10 * intX)/2);
+                playerScGameManager.PlayerStamina += 1;
+                break;
+            case 24:
+                playerScGameManager.PlayerCoins +=  ((10 * intX)/2);
+                playerScGameManager.PlayerPuans +=  ((10 * intX)/2);
+                playerScGameManager.PlayerStamina += 1;
+                break;
+        }
     }
 }
 

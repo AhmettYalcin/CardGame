@@ -3477,6 +3477,7 @@ MonoBehaviour:
   nextLevelString: 
   LevelPanel: {fileID: 788064912}
   ListPanel: {fileID: 2055083927}
+  playerSc: {fileID: 11400000, guid: d6655bdc590904b4baaf84196ac0c5e4, type: 2}
 --- !u!1 &1546343662
 GameObject:
   m_ObjectHideFlags: 0

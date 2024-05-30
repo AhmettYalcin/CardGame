@@ -69,6 +69,7 @@ namespace Manager
 			[Header("Do Tween and List")]
 			[SerializeField] private RectTransform  LevelPanel;
 			[SerializeField] private RectTransform  ListPanel;
+			[SerializeField] private PlayerSC playerSc;
 
 		#endregion
 		
@@ -170,16 +171,17 @@ namespace Manager
 			private void onLevelSelectButton(SelectingLevel clickedLevel)
 			{
 				nextLevelMove(clickedLevel.IntXInt);
+				playerSc.PlayerStamina--;
 				SceneManager.LoadScene("T_CardList");
 
 			}
 
 			public void LevelBuy(LevelCard level)
 			{
-				if (GameDataBase.instance.PlayerCoins >= level.buyPrice)
+				if (playerSc.PlayerCoins >= level.buyPrice)
 				{
 					level.isbought = true;
-					GameDataBase.instance.PlayerCoins -= level.buyPrice;
+					playerSc.PlayerCoins -= level.buyPrice;
 
 					Debug.Log(level.themaName + " bölümü satın alındı!");
 					DeletePrefab();
@@ -209,9 +211,9 @@ namespace Manager
 
 			private void UpdateCanvas()
 			{
-				Text_PlayerCoins.text = GameDataBase.instance.PlayerCoins.ToString();
-				Text_PlayerPuans.text = GameDataBase.instance.PlayerPuans.ToString();
-				Text_PlayerStamina.text = GameDataBase.instance.PlayerStamina.ToString();
+				Text_PlayerCoins.text = playerSc.PlayerCoins.ToString();
+				Text_PlayerPuans.text = playerSc.PlayerPuans.ToString();
+				Text_PlayerStamina.text = playerSc.PlayerStamina.ToString();
 			}
 			
 			public void DeletePrefab()
