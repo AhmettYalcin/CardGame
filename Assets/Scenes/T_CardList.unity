@@ -1914,6 +1914,8 @@ MonoBehaviour:
   scoreText: {fileID: 78504915}
   EndPanel: {fileID: 1242720897}
   cardManager: {fileID: 1866876649}
+  isGameWin: 0
+  levelManager: {fileID: 11400000, guid: 66c0b26dca763f6408a3efb7a914d26c, type: 2}
 --- !u!4 &1146064537
 Transform:
   m_ObjectHideFlags: 0
@@ -2923,6 +2925,7 @@ MonoBehaviour:
   HPText: {fileID: 224694308}
   levelStr: 
   newCardCount: 0
+  cardThemeIntCardManager: 0
   buttonPrefab: {fileID: 1806133036749702367, guid: 55723ad70274f554d9d5baffcb7a70bc, type: 3}
 --- !u!4 &1866876650
 Transform:

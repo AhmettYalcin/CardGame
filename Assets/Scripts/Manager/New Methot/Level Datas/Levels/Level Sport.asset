@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Level Sport
   m_EditorClassIdentifier: 
   themaName: Sport
+  levelIndex: 4
   buyPrice: 250
   playingCount: 0
   MaxPlayingSliderCount: 6
-  isbought: 1
+  isbought: 0
   LevelButton: {fileID: 0}
   OpenButton: {fileID: 0}
   LevelSlider: {fileID: 0}

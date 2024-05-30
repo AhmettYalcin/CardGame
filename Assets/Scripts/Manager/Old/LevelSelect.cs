@@ -34,9 +34,7 @@ namespace Manager
 	public struct SelectLevelData
 	{
 		public Button selectLevelButton;
-		public int IntXInt;
-		public string SecButtonThemaName;
-	}
+		public int IntXInt; }
 	
 	public class LevelSelect : MonoBehaviour
 	{
@@ -48,9 +46,7 @@ namespace Manager
 		[SerializeField] private List<SelectLevelData> selectLevelButtons;
 		[SerializeField] private GameObject  profilePanel;
 		[SerializeField] private GameObject  levelSelectPanel;
-		[SerializeField] private TMP_Text levelNameText;
-		[SerializeField] private TMP_Text levelIndexText;
-		
+
 		[Header("Do Tween ")]
 		[SerializeField] private RectTransform  LevelPanel;
 		[SerializeField] private RectTransform  ListPanel;
@@ -79,7 +75,6 @@ namespace Manager
 		
 		private void Start()
 		{
-			print("Menu Level Start");
 			UPdateDatats(); // proje datalarını güncellemek için 
 			JustCloseSecentPanel(); // Başlangıçta ikinci ekranları kapatmak için
 			UpdateUI(); // UI'yi güncellemek için Start'ta çağırıyoruz
@@ -111,11 +106,6 @@ namespace Manager
 		private void OnLevelButtonClick(LevelClass clickedLevel)
 		{
 			// Seçilen seviye bilgilerini güncelle
-			levelNameText.text = clickedLevel.ThemaName;
-			
-			
-			print(clickedLevel.ThemaName);
-			levelIndexText.text = "Level " + clickedLevel.LevelIndex.ToString();
 			nextLevelTheme(clickedLevel.ThemaName);
 			// Paneli aktif hale getir
 			levelSelectPanel.SetActive(true);

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Level Color
   m_EditorClassIdentifier: 
   themaName: Colors
+  levelIndex: 1
   buyPrice: 100
-  playingCount: 2
+  playingCount: 0
   MaxPlayingSliderCount: 5
   isbought: 0
   LevelButton: {fileID: 0}

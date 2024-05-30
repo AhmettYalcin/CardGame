@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     [field: SerializeField] public CardManager cardManager;
     [SerializeField] private bool isGameWin;
+    [SerializeField] private LevelManager levelManager;
 
     public void GameLose(int score)
     {
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
 
         if (isGameWin)
         {
+            print("Give Game Awards !! ");
             GiveGameAwards(cardManager.cardThemeIntCardManager, cardManager.newCardCount);
             
         }
@@ -77,53 +79,51 @@ public class GameManager : MonoBehaviour
     {
         switch (thema)
         {
-            case 2:
-                LevelSelect.instance.levels[0].LevelSliderCount++;
-              
-                print(LevelSelect.instance.levels[0].LevelSliderCount);
+            case 0:
+                levelManager.Levels[0].playingCount++;
                 break;
-            case 5:
-                LevelSelect.instance.levels[1].LevelSliderCount++;
+            case 1:
+                levelManager.Levels[1].playingCount++;
+                break;
+            case 2:
+                levelManager.Levels[2].playingCount++;
                 break;
             case 3:
-                LevelSelect.instance.levels[2].LevelSliderCount++;
+                levelManager.Levels[3].playingCount++;
                 break;
             case 4:
-                LevelSelect.instance.levels[3].LevelSliderCount++;
-                break;
-            case 6:
-                LevelSelect.instance.levels[4].LevelSliderCount++;
+                levelManager.Levels[4].playingCount++;
                 break; 
             
         }
 
-        switch (intX)
-        {
-            //Para 
-            //Puan
-            //CanPuanı 
-            
-            case 4:
-                GameDataBase.instance.PlayerCoins += ((10 * intX)/2);
-                GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-                GameDataBase.instance.PlayerStamina += 1;
-                break;
-            case 16:
-                GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
-                GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-                GameDataBase.instance.PlayerStamina += 1;
-                break;
-            case 12:
-                GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
-                GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-                GameDataBase.instance.PlayerStamina += 1;
-                break;
-            case 24:
-                GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
-                GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
-                GameDataBase.instance.PlayerStamina += 1;
-                break;
-        }
+        // switch (intX)
+        // {
+        //     //Para 
+        //     //Puan
+        //     //CanPuanı 
+        //     
+        //     case 4:
+        //         GameDataBase.instance.PlayerCoins += ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerStamina += 1;
+        //         break;
+        //     case 16:
+        //         GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerStamina += 1;
+        //         break;
+        //     case 12:
+        //         GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerStamina += 1;
+        //         break;
+        //     case 24:
+        //         GameDataBase.instance.PlayerCoins +=  ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerPuans +=  ((10 * intX)/2);
+        //         GameDataBase.instance.PlayerStamina += 1;
+        //         break;
+        // }
     }
 }
 

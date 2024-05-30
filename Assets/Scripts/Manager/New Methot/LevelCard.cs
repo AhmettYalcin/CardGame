@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class LevelCard : ScriptableObject
 {
 	public string themaName;
-	
-	public float buyPrice;
-	
+
+	public int levelIndex;
+	public int buyPrice;
 	public int playingCount;
 	public int MaxPlayingSliderCount;
 	

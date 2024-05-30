@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Level Fruits
   m_EditorClassIdentifier: 
   themaName: Fruits
+  levelIndex: 2
   buyPrice: 150
-  playingCount: 5
-  MaxPlayingSliderCount: 0
-  isbought: 1
+  playingCount: 0
+  MaxPlayingSliderCount: 5
+  isbought: 0
   LevelButton: {fileID: 0}
   OpenButton: {fileID: 0}
   LevelSlider: {fileID: 0}

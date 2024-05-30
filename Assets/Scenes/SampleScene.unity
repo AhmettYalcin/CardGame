@@ -814,7 +814,6 @@ Transform:
   m_Children:
   - {fileID: 519420032}
   - {fileID: 582588840}
-  - {fileID: 1687056505}
   - {fileID: 1526638534}
   - {fileID: 1228816348}
   m_Father: {fileID: 0}
@@ -1665,7 +1664,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687056507}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
         m_MethodName: OpenLevelPanel
         m_Mode: 1
@@ -2762,7 +2761,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687056507}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
         m_MethodName: JustCloseSecentPanel
         m_Mode: 1
@@ -3362,7 +3361,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687056507}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
         m_MethodName: JustCloseSecentPanel
         m_Mode: 1
@@ -3459,6 +3458,25 @@ MonoBehaviour:
   LevelManager: {fileID: 11400000, guid: 66c0b26dca763f6408a3efb7a914d26c, type: 2}
   prefab: {fileID: 5980746599444806940, guid: 45d46081fd368344792bd48ced06e644, type: 3}
   parentTransform: {fileID: 1891643548}
+  selectLevelButtons:
+  - selectLevelButton: {fileID: 1207571189}
+    IntXInt: 22
+  - selectLevelButton: {fileID: 1410191440}
+    IntXInt: 34
+  - selectLevelButton: {fileID: 1767993316}
+    IntXInt: 44
+  Text_PlayerCoins: {fileID: 1244141923}
+  Text_PlayerPuans: {fileID: 217272821}
+  Text_PlayerStamina: {fileID: 1976145487}
+  Text_LevelSelectLevelInt: {fileID: 1258778305}
+  Text_LevelSelectThemaName: {fileID: 1563019845}
+  levelSelectPanel: {fileID: 1338238714}
+  profilePanel: {fileID: 1476238448}
+  nextLevelThemaInt: 0
+  nextLevelHowMuch: 0
+  nextLevelString: 
+  LevelPanel: {fileID: 788064912}
+  ListPanel: {fileID: 2055083927}
 --- !u!1 &1546343662
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,7 +3714,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1687056507}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
         m_MethodName: OpenListPanel
         m_Mode: 1
@@ -4091,128 +4109,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671642574}
   m_CullTransparentMesh: 1
---- !u!1 &1687056504
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1687056505}
-  - component: {fileID: 1687056507}
-  m_Layer: 0
-  m_Name: Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1687056505
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687056504}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 244963907}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1687056507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687056504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af8823c53d5cde4418a541146770c875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levels:
-  - ThemaName: Animal
-    LevelIndex: 0
-    Price: 0
-    LevelSliderCount: 0
-    MaxLevelSliderCount: 5
-    IsUnlocked: 0
-    LevelButton: {fileID: 0}
-    OpenButton: {fileID: 0}
-    LevelSlider: {fileID: 0}
-    levelButtonText: {fileID: 0}
-    levelPriceText: {fileID: 0}
-  - ThemaName: Sport
-    LevelIndex: 1
-    Price: 100
-    LevelSliderCount: 0
-    MaxLevelSliderCount: 5
-    IsUnlocked: 0
-    LevelButton: {fileID: 0}
-    OpenButton: {fileID: 0}
-    LevelSlider: {fileID: 0}
-    levelButtonText: {fileID: 0}
-    levelPriceText: {fileID: 0}
-  - ThemaName: Colors
-    LevelIndex: 2
-    Price: 200
-    LevelSliderCount: 0
-    MaxLevelSliderCount: 5
-    IsUnlocked: 1
-    LevelButton: {fileID: 0}
-    OpenButton: {fileID: 0}
-    LevelSlider: {fileID: 0}
-    levelButtonText: {fileID: 0}
-    levelPriceText: {fileID: 0}
-  - ThemaName: Fruit
-    LevelIndex: 3
-    Price: 300
-    LevelSliderCount: 0
-    MaxLevelSliderCount: 5
-    IsUnlocked: 1
-    LevelButton: {fileID: 0}
-    OpenButton: {fileID: 0}
-    LevelSlider: {fileID: 0}
-    levelButtonText: {fileID: 0}
-    levelPriceText: {fileID: 0}
-  - ThemaName: Music
-    LevelIndex: 4
-    Price: 500
-    LevelSliderCount: 0
-    MaxLevelSliderCount: 5
-    IsUnlocked: 1
-    LevelButton: {fileID: 0}
-    OpenButton: {fileID: 0}
-    LevelSlider: {fileID: 0}
-    levelButtonText: {fileID: 0}
-    levelPriceText: {fileID: 0}
-  selectLevelButtons:
-  - selectLevelButton: {fileID: 1207571189}
-    IntXInt: 22
-    SecButtonThemaName: 
-  - selectLevelButton: {fileID: 1410191440}
-    IntXInt: 34
-    SecButtonThemaName: 
-  - selectLevelButton: {fileID: 1767993316}
-    IntXInt: 44
-    SecButtonThemaName: 
-  profilePanel: {fileID: 1476238448}
-  levelSelectPanel: {fileID: 1338238714}
-  levelNameText: {fileID: 1258778305}
-  levelIndexText: {fileID: 1563019845}
-  LevelPanel: {fileID: 788064912}
-  ListPanel: {fileID: 2055083927}
-  playerCoinText: {fileID: 1244141923}
-  playerPuanText: {fileID: 217272821}
-  playerStaminaText: {fileID: 1976145487}
-  levelStiringMenu: 
-  levelIntMenu: 0
-  levelThemeNameInt: 0
 --- !u!1 &1729947982
 GameObject:
   m_ObjectHideFlags: 0

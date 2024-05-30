@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Level Music
   m_EditorClassIdentifier: 
   themaName: Music
+  levelIndex: 3
   buyPrice: 200
   playingCount: 0
   MaxPlayingSliderCount: 6
-  isbought: 1
+  isbought: 0
   LevelButton: {fileID: 0}
   OpenButton: {fileID: 0}
   LevelSlider: {fileID: 0}

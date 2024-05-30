@@ -31,9 +31,9 @@ public class CardManager : MonoBehaviour
 
     void Start()
     {
-        levelStr = LevelSelect.instance.levelStiringMenu;
-        newCardCount = LevelSelect.instance.levelIntMenu;
-        cardThemeIntCardManager = LevelSelect.instance.levelThemeNameInt;
+        levelStr = GameConsolo.instance.nextLevelString;
+        newCardCount = GameConsolo.instance.nextLevelHowMuch;
+        cardThemeIntCardManager = GameConsolo.instance.nextLevelThemaInt;
         
         score = 0; // daha sonra menüden gelen puan a eşitlenecek
         scoreText.text = score.ToString();

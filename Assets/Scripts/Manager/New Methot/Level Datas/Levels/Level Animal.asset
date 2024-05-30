@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Level Animal
   m_EditorClassIdentifier: 
   themaName: Animal
+  levelIndex: 0
   buyPrice: 0
-  playingCount: 4
+  playingCount: 1
   MaxPlayingSliderCount: 5
-  isbought: 0
+  isbought: 1
   LevelButton: {fileID: 0}
   OpenButton: {fileID: 0}
   LevelSlider: {fileID: 0}
