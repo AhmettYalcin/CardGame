@@ -1195,6 +1195,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390892905}
   m_CullTransparentMesh: 1
+--- !u!1 &410509759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410509761}
+  - component: {fileID: 410509760}
+  m_Layer: 0
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &410509760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410509759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94e604309a296b342bd03591a5defbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sesDosyasi: {fileID: 8300000, guid: 6764c2b6c00475842b21ab08be7623d4, type: 3}
+--- !u!4 &410509761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410509759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1962,6 @@ MonoBehaviour:
   isGameWin: 0
   levelManager: {fileID: 11400000, guid: 66c0b26dca763f6408a3efb7a914d26c, type: 2}
   playerScGameManager: {fileID: 11400000, guid: d6655bdc590904b4baaf84196ac0c5e4, type: 2}
-  winString: "\xD6yle olsun"
 --- !u!4 &1146064537
 Transform:
   m_ObjectHideFlags: 0
@@ -2645,7 +2689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000061035, y: -356.05}
+  m_AnchoredPosition: {x: -0.000061035, y: -356.05005}
   m_SizeDelta: {x: 1920, y: 509.6001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1673611250
@@ -2929,6 +2973,7 @@ MonoBehaviour:
   newCardCount: 0
   cardThemeIntCardManager: 0
   buttonPrefab: {fileID: 1806133036749702367, guid: 55723ad70274f554d9d5baffcb7a70bc, type: 3}
+  sound: {fileID: 410509760}
 --- !u!4 &1866876650
 Transform:
   m_ObjectHideFlags: 0
@@ -3737,3 +3782,4 @@ SceneRoots:
   - {fileID: 1146064537}
   - {fileID: 2036640131}
   - {fileID: 216711584}
+  - {fileID: 410509761}

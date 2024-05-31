@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using JetBrains.Annotations;
 using Manager;
 using TMPro;
 using UnityEngine;
@@ -28,6 +29,8 @@ public class CardManager : MonoBehaviour
     private bool canClick = false; // Kartların tıklanabilirliğini kontrol eden boolean değişken
     private int score; //oyun içindeki puanımızı tutan değişken
     private int healthPoints; // oyun içinde kalan can değerimiz
+
+    public SoundEffect sound;
 
     void Start()
     {
@@ -139,6 +142,7 @@ public class CardManager : MonoBehaviour
         // Seçilen kart sayısı 2 veya daha azsa işlem yap
         if (selectedCards.Count < 2)
         {
+            sound.Sound();
             selectedCards.Add(cardData); // Kartı seçilen kartlar listesine ekle
             clickCount++; // Butona tıklama sayısını arttır
             
@@ -171,6 +175,7 @@ public class CardManager : MonoBehaviour
         // Eğer kartların ID'leri eşitse
         if (cardData[0].cardID == cardData[1].cardID)
         {
+            Vibration.Vibrate(10);
             StartCoroutine(MyCoroutineWithDelay(cardData));
             CreateBigButton(cardData[0]);
             score += 10;

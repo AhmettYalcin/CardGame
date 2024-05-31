@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/T_CardList.unity
     guid: f1b5ca1f23bdd554bafe28337873d0ae
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: ad72c91800d055b46bfacebaf5e85631, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 28042e7bc66890145b9ef79e2c6c17d8, type: 2}
