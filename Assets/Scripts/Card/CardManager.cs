@@ -4,6 +4,7 @@ using DG.Tweening;
 using JetBrains.Annotations;
 using Manager;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -35,12 +36,17 @@ public class CardManager : MonoBehaviour
     void Start()
     {
         levelStr = GameConsolo.instance.nextLevelString;
+        print(levelStr);
         newCardCount = GameConsolo.instance.nextLevelHowMuch;
-        cardThemeIntCardManager = GameConsolo.instance.nextLevelThemaInt;
+        cardThemeIntCardManager = GameConsolo.instance.nextLevelThemaInt; 
+
+       /* levelStr = "FourXSix";
+        newCardCount = 24;
+        cardThemeIntCardManager = 0;*/
         
         score = 0; // daha sonra menüden gelen puan a eşitlenecek
         scoreText.text = score.ToString();
-        healthPoints = 2;
+        healthPoints = newCardCount/3;  //oyun içindeki can değeri kart sayısı/3
         HPText.text = healthPoints.ToString();
         gameManager = GameObject.FindObjectOfType<GameManager>();
         // levelStr adını kullanarak RectTransform'i bul
@@ -52,7 +58,6 @@ public class CardManager : MonoBehaviour
             buttonsParent = levelRectTransform;
             buttonsParent.gameObject.SetActive(true);
         }
-      //  print(" Card Theme int " + cardThemeIntCardManager);
        
         cardCount = newCardCount;
         // Kart listesini oluştur
@@ -79,7 +84,6 @@ public class CardManager : MonoBehaviour
         }*/
         // Parent transformunun altındaki boş objeleri bul
         GameObject[] emptySlots = GameObject.FindGameObjectsWithTag(levelStr);
-        // boş objeleri tag inden bularak listeye yazıyoruz
         int index = 0;
         
 
@@ -88,6 +92,18 @@ public class CardManager : MonoBehaviour
         {
             // Boş GameObject üzerinde butonu oluştur
             GameObject buttonGO = Instantiate(buttonPrefab, emptySlots[index].transform); 
+            
+            // Butonun boyutunu ayarla
+            RectTransform buttonRectTransform = buttonGO.GetComponent<RectTransform>();
+            RectTransform emptySlotRectTransform = emptySlots[index].GetComponent<RectTransform>();
+
+            if (buttonRectTransform != null && emptySlotRectTransform != null)
+            {
+                buttonRectTransform.sizeDelta = new Vector2(emptySlotRectTransform.rect.width, emptySlotRectTransform.rect.height);
+                buttonRectTransform.anchoredPosition = Vector2.zero; // Merkezle
+            }
+            
+            
             // boş objelerin konumlarında butonları oluşturuyoruz
             Button button = buttonGO.GetComponent<Button>();
          //   print(emptySlots[index].transform);
@@ -169,9 +185,6 @@ public class CardManager : MonoBehaviour
     }
     void Control(List<CardData> cardData)
     {
-        // Kontrol işlemlerini gerçekleştir
-       // Debug.Log("Kartlar kontrol ediliyor...");
-    
         // Eğer kartların ID'leri eşitse
         if (cardData[0].cardID == cardData[1].cardID)
         {
@@ -180,10 +193,9 @@ public class CardManager : MonoBehaviour
             CreateBigButton(cardData[0]);
             score += 10;
             scoreText.text = score.ToString();
-        //    Debug.Log("Kartlar eşleşti! Puan eklendi.");
-            //DisableCards(cardData);
-            cardCount -= 2;
-            GameEnd(); // tüm kartların açılıp açılmadığını komtrol et
+            // Debug.Log("Kartlar eşleşti! Puan eklendi.");
+            cardCount -= 2; //ekrandaki kart sayısını azalttık.
+            //GameEnd(); // tüm kartların açılıp açılmadığını komtrol et
             
         }
         else
@@ -298,6 +310,10 @@ public class CardManager : MonoBehaviour
 
         // Butona tıklama olayı ata
         bigButton.onClick.AddListener(OnBigButtonClick);
+        
+        GameEndDelayed(2f);
+        //Butonu belirli bir süre sonrq yok et
+        Destroy(bigButtonGO,2f);
     }
 
     void OnBigButtonClick()
@@ -305,6 +321,7 @@ public class CardManager : MonoBehaviour
         // Kullanıcı büyük butona tıkladığında geri gitme işlemi burada gerçekleşir
         Destroy(bigButton.gameObject);
         bigButton.gameObject.SetActive(false);
+        GameEnd(); // oyunun bitip bitmediğini kontrol et
     }
     void AnimateCardFlip(CardData cardData, bool isFlippingOpen, Button button)
     {
@@ -323,7 +340,7 @@ public class CardManager : MonoBehaviour
             // Kartın X ölçeğini tekrar eski haline getirin
             button.transform.DOScaleX(1, 0.2f).OnComplete(() =>
             {
-                // Ölçeklendirme tamamlandıktan sonra, ölçeği kesin olarak ayarlayın
+                // Ölçeklendirme
                 button.transform.localScale = new Vector3(1, 1, 1);
             });
         });
@@ -337,6 +354,11 @@ public class CardManager : MonoBehaviour
         }else if(cardCount==0){
             gameManager.GameWin(score);
         }
+    }
+    // Belirli bir süre sonra GameEnd fonksiyonunu çalıştıran yeni bir fonksiyon
+    void GameEndDelayed(float delay)
+    {
+        Invoke("GameEnd", delay);
     }
 
 }

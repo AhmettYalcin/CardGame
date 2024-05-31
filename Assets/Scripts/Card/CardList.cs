@@ -33,20 +33,27 @@ public class CardList : MonoBehaviour
     void Awake()
     {
         // Her bir kart seti için resim dizilerini ve arka plan resmini tanımla
-        cardImageDictionary.Add("Set2", cardImages2);
-        backImageDictionary.Add("Set2", backImage2);
+        cardImageDictionary.Add("0", cardImages2);
+        backImageDictionary.Add("0", backImage2);
         
-        cardImageDictionary.Add("Set3", cardImages3);
-        backImageDictionary.Add("Set3", backImage3);
+        cardImageDictionary.Add("1", cardImages3);
+        backImageDictionary.Add("1", backImage2);
         
-        cardImageDictionary.Add("Set4", cardImages4);
-        backImageDictionary.Add("Set4", backImage4);
+        cardImageDictionary.Add("2", cardImages4);
+        backImageDictionary.Add("2", backImage2);
+        
+        cardImageDictionary.Add("4", cardImages5);
+        backImageDictionary.Add("4", backImage2);
+        
+        cardImageDictionary.Add("3", cardImages6);
+        backImageDictionary.Add("3", backImage2);
 
         // Daha fazla kart seti eklemek için aynı şekilde devam edebilirsiniz
     }
     
-    /* public void CreateCards(int count,string imageSetName)
+     public void CreateCards(int count,int themeName)
      {
+         string imageSetName = themeName.ToString();
          // Kullanıcı tarafından belirtilen isme göre kart resimlerini al
          Sprite[] selectedCardImages = cardImageDictionary[imageSetName];
  
@@ -54,7 +61,7 @@ public class CardList : MonoBehaviour
          Sprite selectedBackImage = backImageDictionary[imageSetName];
          
          // Rastgele seçilecek kart sayısını belirle
-         int maxIndex = 15;
+         int maxIndex = selectedCardImages.Length;
          int[] selectedIndices = new int[count / 2]; // İki kart için aynı resim kullanılacağı için count/2
  
          // Rastgele seçilen kart indekslerini belirle
@@ -84,7 +91,7 @@ public class CardList : MonoBehaviour
              cards.Add(newCard);
              cards.Add(newCard2);
          }
-     } */
+     } 
 
 
    /* public void CreateCards(int count)
@@ -107,7 +114,7 @@ public class CardList : MonoBehaviour
         }
     } */
    
-   public void CreateCards(int count, int cardTheme)
+  /* public void CreateCards(int count, int cardTheme)
    {
        // İstenen sayıda kart ekleyelim
        for (int i = 0; i < count / 2; i++)
@@ -149,6 +156,6 @@ public class CardList : MonoBehaviour
            cards.Add(newCard);
            cards.Add(newCard2);
        }
-   }
+   } */
 
 }

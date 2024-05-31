@@ -114,8 +114,6 @@ namespace Manager
 		{
 			nextLevelMove(clickedLevel.IntXInt);
 			SceneManager.LoadScene("T_CardList");
-
-			print(clickedLevel.IntXInt);
 		}
 
 		public void OpenProfilePanel()
