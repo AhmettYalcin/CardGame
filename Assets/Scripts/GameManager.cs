@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour
     public void GameLose(int score)
     {
         isGameWin = false;
-        // Kaybettiniz mesajını göster
         commentText.text = "You Lose! Try Again";
         // Skoru göster
         scoreText.text = "Score: " + score.ToString();
@@ -39,7 +38,6 @@ public class GameManager : MonoBehaviour
     public void GameWin(int score)
     {
         isGameWin = true;
-        // Kazandınız mesajını göster
         commentText.text = "Congratulations! You Win";
         // Skoru göster
         scoreText.text = "Score: " + score.ToString();
