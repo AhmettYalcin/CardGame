@@ -533,7 +533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1526638535}
         m_TargetAssemblyTypeName: Manager.GameConsolo, Assembly-CSharp
-        m_MethodName: DeletePrefab
+        m_MethodName: OpenProfilePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1664,8 +1664,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
+      - m_Target: {fileID: 1526638535}
+        m_TargetAssemblyTypeName: Manager.GameConsolo, Assembly-CSharp
         m_MethodName: OpenLevelPanel
         m_Mode: 1
         m_Arguments:
@@ -2761,8 +2761,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
+      - m_Target: {fileID: 1526638535}
+        m_TargetAssemblyTypeName: Manager.GameConsolo, Assembly-CSharp
         m_MethodName: JustCloseSecentPanel
         m_Mode: 1
         m_Arguments:
@@ -3361,8 +3361,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
+      - m_Target: {fileID: 1526638535}
+        m_TargetAssemblyTypeName: Manager.GameConsolo, Assembly-CSharp
         m_MethodName: JustCloseSecentPanel
         m_Mode: 1
         m_Arguments:
@@ -3715,8 +3715,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Manager.LevelSelect, Assembly-CSharp
+      - m_Target: {fileID: 1526638535}
+        m_TargetAssemblyTypeName: Manager.GameConsolo, Assembly-CSharp
         m_MethodName: OpenListPanel
         m_Mode: 1
         m_Arguments:

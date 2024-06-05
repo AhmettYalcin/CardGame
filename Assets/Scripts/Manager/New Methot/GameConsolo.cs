@@ -260,7 +260,12 @@ namespace Manager
 				levelSelectPanel.SetActive(false);
 				profilePanel.SetActive(false);
 			}
-			
+
+			public void OpenProfilePanel()
+			{
+				profilePanel.SetActive(true);
+			}
+
 		#endregion
 
 		#region DoTweeen
