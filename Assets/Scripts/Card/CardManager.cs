@@ -338,10 +338,10 @@ public class CardManager : MonoBehaviour
             buttonImage.sprite = targetSprite;
 
             // Kartın X ölçeğini tekrar eski haline getirin
-            button.transform.DOScaleX(1, 0.2f).OnComplete(() =>
+            button.transform.DOScaleX(1.5f, 0.2f).OnComplete(() =>
             {
                 // Ölçeklendirme
-                button.transform.localScale = new Vector3(1, 1, 1);
+                button.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             });
         });
     }

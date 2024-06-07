@@ -3465,6 +3465,8 @@ MonoBehaviour:
     IntXInt: 34
   - selectLevelButton: {fileID: 1767993316}
     IntXInt: 44
+  - selectLevelButton: {fileID: 1801350338}
+    IntXInt: 46
   Text_PlayerCoins: {fileID: 1244141923}
   Text_PlayerPuans: {fileID: 217272821}
   Text_PlayerStamina: {fileID: 1976145487}
@@ -4474,7 +4476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1801350337
 RectTransform:
   m_ObjectHideFlags: 0

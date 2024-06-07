@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536842a4b0ee575489cbdac9df7adcee, type: 3}
   m_Name: Level Sport
   m_EditorClassIdentifier: 
-  themaName: Sport
+  themaName: Professions
   levelIndex: 4
   buyPrice: 250
   playingCount: 0
