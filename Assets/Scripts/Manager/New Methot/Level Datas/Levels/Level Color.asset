@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level Color
   m_EditorClassIdentifier: 
   themaName: Colors
+  themeImage: {fileID: 21300000, guid: a9ac7d586bc6fa74d87d67ad5000fd9f, type: 3}
   levelIndex: 1
   buyPrice: 100
   playingCount: 0

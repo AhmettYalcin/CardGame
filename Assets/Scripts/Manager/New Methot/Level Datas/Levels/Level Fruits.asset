@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level Fruits
   m_EditorClassIdentifier: 
   themaName: Fruits
+  themeImage: {fileID: 21300000, guid: 1d8cbf87256e30949b481d124f2e9377, type: 3}
   levelIndex: 2
   buyPrice: 150
   playingCount: 0

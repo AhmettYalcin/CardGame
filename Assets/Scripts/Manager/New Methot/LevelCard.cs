@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelCard : ScriptableObject
 {
 	public string themaName;
+	public Sprite themeImage;
 
 	public int levelIndex;
 	public int buyPrice;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level Sport
   m_EditorClassIdentifier: 
   themaName: Sport
+  themeImage: {fileID: 21300000, guid: f7da874467888f548be0f4bfd6f2af20, type: 3}
   levelIndex: 4
   buyPrice: 250
   playingCount: 0

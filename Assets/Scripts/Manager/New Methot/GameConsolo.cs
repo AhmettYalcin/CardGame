@@ -101,6 +101,18 @@ namespace Manager
 				#region Buttons&Text
 
 					TMP_Text levelButtonText = newPrefab.GetComponentInChildren<TMP_Text>();
+
+					Transform childTransform = newPrefab.transform.Find("B_LevelButton/LevelImage");
+
+					if (childTransform != null)
+					{
+						Image levelButtonImage = childTransform.GetComponent<Image>();
+						if (levelButtonImage != null)
+						{
+							levelButtonImage.sprite = LevelManager.Levels[index].themeImage;
+						}
+					}
+
 					if (levelButtonText != null)
 					{
 						levelButtonText.text = LevelManager.Levels[index].themaName;
