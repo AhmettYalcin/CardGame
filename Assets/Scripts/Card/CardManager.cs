@@ -311,7 +311,7 @@ public class CardManager : MonoBehaviour
         // Butona tıklama olayı ata
         bigButton.onClick.AddListener(OnBigButtonClick);
         
-        GameEndDelayed(2f);
+        //GameEndDelayed(2f);
         //Butonu belirli bir süre sonrq yok et
         Destroy(bigButtonGO,2f);
     }
@@ -351,7 +351,8 @@ public class CardManager : MonoBehaviour
         if (healthPoints==0)
         {
             gameManager.GameLose(score);
-        }else if(cardCount==0){
+        }
+        if(cardCount==0){
             gameManager.GameWin(score);
         }
     }

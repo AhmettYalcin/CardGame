@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
         // Paneli aktif et ve dotween animasyonu ekle
         if (EndPanel != null)
         {
+            print("Lose Paneli açıldı");
             EndPanel.SetActive(true);
             EndPanel.transform.localScale = Vector3.zero; // Başlangıç ölçeğini sıfır yap
             EndPanel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack); // Büyüme animasyonu
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         // Paneli aktif et ve dotween animasyonu ekle
         if (EndPanel != null)
         {
+            print("Win Paneli açıldı");
             EndPanel.SetActive(true);
             EndPanel.transform.localScale = Vector3.zero; // Başlangıç ölçeğini sıfır yap
             EndPanel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack); // Büyüme animasyonu
