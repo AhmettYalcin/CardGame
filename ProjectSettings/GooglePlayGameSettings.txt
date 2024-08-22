@@ -1,2 +1,11 @@
 lastUpgrade=01101
 proj.pluginVersion=0.11.01
+proj.AppId=479560067242
+and.BundleId=com.HaruGames.com.unity.template
+proj.classDir=Assets
+proj.ConstantsClassName=CardGame.GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e479560067242%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.HaruGames.com.unity.template%3c%2fstring%3e%0d%0a++%3c%21--achievement+AchievementToReveal--%3e%0d%0a++%3cstring+name%3d%22achievement_achievementtoreveal%22+translatable%3d%22false%22%3eCgkIqtGHwPoNEAIQAQ%3c%2fstring%3e%0d%0a++%3c%21--achievement+AchivedUnLock--%3e%0d%0a++%3cstring+name%3d%22achievement_achivedunlock%22+translatable%3d%22false%22%3eCgkIqtGHwPoNEAIQAg%3c%2fstring%3e%0d%0a++%3c%21--achievement+AchievementToIncrement--%3e%0d%0a++%3cstring+name%3d%22achievement_achievementtoincrement%22+translatable%3d%22false%22%3eCgkIqtGHwPoNEAIQAw%3c%2fstring%3e%0d%0a++%3c%21--achievement+AchievementHiddenIncremental--%3e%0d%0a++%3cstring+name%3d%22achievement_achievementhiddenincremental%22+translatable%3d%22false%22%3eCgkIqtGHwPoNEAIQBA%3c%2fstring%3e%0d%0a++%3c%21--event+SmokingEvent--%3e%0d%0a++%3cstring+name%3d%22event_smokingevent%22+translatable%3d%22false%22%3eCgkIqtGHwPoNEAIQBg%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Leaders--%3e%0d%0a++%3cstring+name%3d%22leaderboard_leaders%22+translatable%3d%22false%22%3eCgkIqtGHwPoNEAIQBQ%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=479560067242-tsocednkvkkff98bnqrh2utgoq8idv60.apps.googleusercontent.com
+android.SetupDone=true
+App.NearbdServiceId=com.HaruGames.com.unity.template
+android.NearbySetupDone=true
